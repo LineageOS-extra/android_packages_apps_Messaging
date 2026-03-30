@@ -42,6 +42,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.messaging.R;
+import com.android.messaging.datamodel.action.MarkAllAsReadAction;
 import com.android.messaging.datamodel.DataModel;
 import com.android.messaging.datamodel.binding.Binding;
 import com.android.messaging.datamodel.binding.BindingBase;
@@ -321,6 +322,16 @@ public class ConversationListFragment extends Fragment implements ConversationLi
         if (mShowBlockedMenuItem != null) {
             mShowBlockedMenuItem.setVisible(mBlockedAvailable);
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_mark_all_as_read:
+                MarkAllAsReadAction.markAllAsRead();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
